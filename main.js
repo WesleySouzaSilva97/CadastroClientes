@@ -12,7 +12,7 @@ const { app, BrowserWindow, nativeTheme, Menu, shell } = require('electron/main'
 let win
 const createWindow = () => {
   // definindo tema da janela claro ou escuro
-  nativeTheme.themeSource = 'light'
+  nativeTheme.themeSource = 'dark'
   win = new BrowserWindow({
     width: 1010, // Largura
      height: 720, // Altura
@@ -32,6 +32,7 @@ const createWindow = () => {
 }
 
 //janela sobre
+let about
 function aboutWindow() {
   nativeTheme.themeSource='light'
   // obter a janela principal 
@@ -40,7 +41,7 @@ function aboutWindow() {
   if (mainWindow) {
     about = new BrowserWindow({
       width: 320,
-      height: 280,
+      height: 290,
       autoHideMenuBar: true,
       resizable: false,
       minimizable: false,
@@ -81,15 +82,19 @@ const template = [
     submenu: [
       {
         label: 'Sair',
-        accelerator: 'Ctrl+N',
+        accelerator: 'Alt+F4',
+        click: () => app.quit()
       },
+      
       {
          type: 'separator'
       },
+    ]
+    {
+    label: 'Relatório',
+    submenu: [
       {
-        label: 'Sair',
-        accelerator: 'Alt+F4',
-        click: () => app.quit()
+        label: 'Clientes',
       }
     ]
   },
