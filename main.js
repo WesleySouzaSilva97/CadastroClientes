@@ -82,6 +82,7 @@ const template = [
       {
         label: 'Sair',
         accelerator: 'Ctrl+N',
+        click: () => app.quit()
       },
       {
          type: 'separator'
