@@ -77,10 +77,10 @@ app.commandLine.appendSwitch('log-level','3')
 // template do menu  
 const template = [
   {
-    label: 'Notas',
+    label: 'Cadastro',
     submenu: [
       {
-        label: 'Criar nota',
+        label: 'Sair',
         accelerator: 'Ctrl+N',
       },
       {
