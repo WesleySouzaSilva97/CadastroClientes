@@ -12,14 +12,14 @@ const { app, BrowserWindow, nativeTheme, Menu, shell } = require('electron/main'
 let win
 const createWindow = () => {
   // definindo tema da janela claro ou escuro
-  nativeTheme.themeSource = 'light'
+  nativeTheme.themeSource = 'dark'
   win = new BrowserWindow({
     width: 1010, // Largura
-     height: 720, // Altura
-    //frame: false
-     resizable: false, // Maximizar
+    height: 720, // Altura
+    // frame: false
+    resizable: false, // Maximizar
     // minimizable: false, // Minimizar
-     closable: false, //fecheible
+    closable: false, //fecheible
     // autoHideMenuBar: true // fesconder o menu
   })
 
@@ -27,20 +27,21 @@ const createWindow = () => {
   // Atenção!!!! Antes importar o recurso menu
   Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 
-  // carregar o documneto na janela
+  // carregar o documento na janela
   win.loadFile('./src/views/index.html')
 }
 
 //janela sobre
+let about
 function aboutWindow() {
-  nativeTheme.themeSource='light'
+  nativeTheme.themeSource = 'light'
   // obter a janela principal 
   const mainWindow = BrowserWindow.getFocusedWindow()
-  // validação (se existir a janela pricipal)
+  // validação (se existir a janela principal)
   if (mainWindow) {
     about = new BrowserWindow({
       width: 320,
-      height: 280,
+      height: 290,
       autoHideMenuBar: true,
       resizable: false,
       minimizable: false,
@@ -56,7 +57,7 @@ function aboutWindow() {
 app.whenReady().then(() => {
   createWindow()
 
-  // so ativar a janela principal se nenhuma outra estiver ativa
+  // só ativar a janela principal se nenhuma outra estiver ativa
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
@@ -64,15 +65,15 @@ app.whenReady().then(() => {
   })
 })
 
-// se o sistema não for MAC encerrar  a aplicação quando a janela for fechada
+// se o sistema não for MAC encerrar a aplicação quando a janela for fechada
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
-// reduzir a verbosidade de logs não criticos  (divitools)
-app.commandLine.appendSwitch('log-level','3')
+// reduzir a verbosidade de logs não críticos  (devtools)
+app.commandLine.appendSwitch('log-level', '3')
 
 // template do menu  
 const template = [
@@ -83,14 +84,14 @@ const template = [
         label: 'Sair',
         accelerator: 'Ctrl+N',
         click: () => app.quit()
-      },
+      }
+    ]
+  },
+  {
+    label: 'Relatório',
+    submenu: [
       {
-         type: 'separator'
-      },
-      {
-        label: 'Sair',
-        accelerator: 'Alt+F4',
-        click: () => app.quit()
+        label: 'Clientes',
       }
     ]
   },
@@ -102,7 +103,7 @@ const template = [
         role: 'zoomIn'
       },
       {
-        label:'Reduzir zoom',
+        label: 'Reduzir zoom',
         role: 'zoomOut'
       },
       {
@@ -129,7 +130,6 @@ const template = [
         label: 'Sobre',
         click: () => aboutWindow()
       }
-      
     ]
   }
 ]
