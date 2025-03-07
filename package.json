@@ -1,0 +1,19 @@
+{
+  "name": "cadastroclientes",
+  "version": "1.0.0",
+  "description": "Cadastro Clientes",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WesleySouzaSilva97"
+  },
+  "author": "Wesley Souza",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^8.12.1"
+  }
+}
